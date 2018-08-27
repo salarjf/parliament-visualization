@@ -27,11 +27,11 @@ This is nodeJS implementation of data visalization website for Iran's parliament
 * Client-Side visualization of different data types
 ![](https://github.com/salarjf/parliament-visualization/blob/master/screenshots/Picture1.png)
 * Responsive architecture to be usable on different platforms with different types of graphs
-![](https://github.com/salarjf/parliament-visualization/blob/master/screenshots/Picture3.png)
+![](https://github.com/salarjf/parliament-visualization/blob/master/screenshots/picture3.png)
 * Map implementation for geographical data
-![](https://github.com/salarjf/parliament-visualization/blob/master/screenshots/Picture2.png)
+![](https://github.com/salarjf/parliament-visualization/blob/master/screenshots/picture2.png)
 * Flowchart for visualizing process
-![](https://github.com/salarjf/parliament-visualization/blob/master/screenshots/Picture5.png)
+![](https://github.com/salarjf/parliament-visualization/blob/master/screenshots/picture5.png)
 
 
 
