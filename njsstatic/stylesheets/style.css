@@ -1,0 +1,180 @@
+
+body { 
+	padding-top: 60px;
+	/*font-family: "Bziba";*/
+	font-family: "Bhoma";
+}
+table { table-layout: fixed; }
+
+
+th
+{
+	height: 10px;
+}
+tr {
+	height: 20px;
+}
+img.img-circle{
+	border-radius:50%;
+}
+legend{
+	/*width:auto;  Or auto */*/
+    padding:10 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+    text-align: right;
+}
+
+.raytable td{
+	height: 70px;
+}
+.maincontainerheader
+{
+	background-color:  #333333;
+	font-size: 30px;
+	text-align: center;
+	border-radius: 4px;
+	color: white;
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+}
+.header.subheader{
+	width: 100%;
+	text-align: right;
+	float: right;
+	font-size: 25px;
+	font-size: italic;
+	margin-top: 0px;
+	padding-bottom:10px; 
+
+}
+.row.moshakhasat
+{
+	height: 150px;
+	text-align: right;
+	margin-left: -35px;
+	width: 1207px;
+
+}
+
+.moshakhasatefard
+{
+	background-color:  #d9d9d9;
+	border-radius: 4px;
+	float: right;
+	padding-top: 5px;
+}
+.aksefard
+{
+	background-color:  #d9d9d9;
+	text-align: center;
+	border-radius: 4px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-top: 13px;
+	padding-bottom: 10px;
+
+}
+.col-md-2.ara
+{
+	background-color:  #d9d9d9;
+	text-align: center;
+	border-radius: 4px;
+	float: left;
+}
+
+.row.ara{
+	margin-left: -34px;
+	margin-right: -35px;
+	padding-bottom: 10px;
+	padding-top: 15px;
+	
+}
+#totalhuzurplot
+{
+	background-color:  #d9d943;
+	border-radius: 4px;
+}
+#takhirplot
+{
+	background-color:  #7f8000;
+	border-radius: 4px;
+	margin: 5px
+}
+#gheybatplot
+{
+	background-color:  #7f8000;
+	border-radius: 4px;
+	margin: 5px;
+}
+.hoze
+{
+	height: 60px;
+}
+.naam
+{
+	height: 60px;
+	background-color: #b3b3b3;
+	border-radius: 4px;
+	padding-top: 5px;
+
+}
+
+#huzurghiab
+{
+	background-color: #d9d9d9;
+	border-radius: 4px;
+	margin-top: 10px;
+	width: 1170px;
+
+}
+
+.col-md-6.hoze{
+	padding-top: 15px;
+}
+.col-md-6.lower{
+	padding-top: 15px;
+}
+
+
+/*
+
+
+d3
+
+
+*/
+
+.bar {
+fill: steelblue;
+}
+.axis text {
+font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+fill: none;
+stroke: #000;
+shape-rendering: crispEdges;
+}
+
+
+
+.subcontainer{
+	background-color: #999999;
+	border-radius: 4px;
+	padding: 5px;
+	border-spacing: 20px;
+	border:20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+
+}
+#totalhuzurtext
+{
+	width: 750px;
+	height: 250px;
+	padding: 10px;
+}
+

@@ -1,0 +1,115 @@
+doctype html
+//if IE 8
+//if IE 9
+// [if gt IE 8] <!
+// <![endif]
+head
+  meta(charset='utf-8')
+  title پروفایل #{namayadneDetails.naam}
+  meta(name='description', content='ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.')
+  link(rel='stylesheet', href='/njsstatic/fa/css/font-awesome.min.css')
+  script(src='/njsstatic/js/pages/tablesGeneral.js',type="text/javascript")
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+  link(rel='stylesheet', href='/njsstatic/stylesheets/bootstrap.css')
+  link(rel='stylesheet', href='/njsstatic/css/plugins.css')
+  link(rel='stylesheet', href='/njsstatic/css/main.css')
+  link(rel='stylesheet', href='/njsstatic/css/themes.css')
+  script(src='/njsstatic/js/vendor/modernizr-2.7.1-respond-1.4.2.min.js')
+  link(rel='stylesheet', href='/njsstatic/stylesheets/modification.css')
+  script(src='/njsstatic/js/vendor/bootstrap.min.js')
+  script(src='/njsstatic/js/plugins.js')
+  script(src='/njsstatic/js/app.js')
+
+  script.
+    !window.jQuery && document.write(decodeURI('%3Cscript src="js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));
+
+body
+  #page-container.sidebar-visible-xs
+    #main-container
+      header#navigation-header.navbar.navbar-default.navbar-fixed-top(style='opacity:.9; visibility: visible')
+        // Right Header Navigation
+        ul.nav.navbar-nav.pull-right.text-center(style='width:95%;')
+          // Alternative Sidebar Toggle Button
+          li.col-sm-2
+            a(href='/index.html#a6')
+              | درباره ما
+          li.col-sm-2
+            a(href='/FAQ.html')
+              | پرسش‌های متداول
+          li.col-sm-2
+            a(href='/Koliat.html')
+              | خلاصه‌ی آیین‌نامه‌ی مجلس
+          li.col-sm-2
+            a(href='/Summary.html')
+              | مجلس به زبان ساده
+          li.col-sm-2
+            a(href='/index.html#a2')
+              | جستجوی نمایندگان / ترین‌ها
+          li.col-sm-2
+            a(href='/index.html')
+              big
+                strong مجلس‌نما؛
+
+      #page-content
+        block profilev3
+        block moshakhasatenamayande
+
+script.
+  jQuery(document).ready(function() {
+     
+      //authorc
+    search =  $(".js-data-example-ajax");
+    search.select2({
+        width : '100%',
+        ajax: {
+            minimumSelectionLength: 2,
+            url: "/search",
+            dataType: 'json',
+            delay: 500,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            processResults: function (data, page) {
+
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data.items
+                };
+            }
+
+        },
+        templateResult: function (repo) {
+            if (repo.loading) return repo.text;
+            var S_ID=repo.S_ID;
+            var markup=   
+            '<div class="clearfix" style=" padding: 10px; background: #d9d9d9;" >'+
+              '<a class="detail-link" href="/namayande/'+S_ID+'">'+
+                
+                '<div class="col-sm-3">'+
+                  '<img src="/images/namayandegan/'+S_ID+'.png" style="width: 100%" />'+
+                '</div>'+
+                
+                '<div clas="col-sm-4"><p style="font-size:150%; text-align:right; "> '+repo.name+'</p></div>'+
+              
+                '<div clas="col-sm-5"><p class="text-right" style="color:#006666">حوزه انتخابیه:'+repo.hoze+'</p></div>'+
+
+            '</a>'+
+    '</div>'
+
+
+            return markup;
+        },
+        templateSelection: function (repo) {
+            return  repo.id;
+        }
+    });
+    search.on("select2:select", function (e) {window.location = e.target.value;});
+  });
+
+
+

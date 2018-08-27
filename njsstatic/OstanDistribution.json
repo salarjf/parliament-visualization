@@ -1,0 +1,157 @@
+[
+  {
+    "value": 4,
+    "name": "هرمزگان",
+    "hc-key": "ir-hg"
+  },
+  {
+    "value": 4,
+    "name": "بوشهر",
+    "hc-key": "ir-bs"
+  },
+  {
+    "value": 3,
+    "name": "کهگیلویه و بویر احمد",
+    "hc-key": "ir-kb"
+  },
+  {
+    "value": 18,
+    "name": "فارس",
+    "hc-key": "ir-fa"
+  },
+  {
+    "value": 19,
+    "name": "اصفهان",
+    "hc-key": "ir-es"
+  },
+  {
+    "value": 5,
+    "name": "سمنان",
+    "hc-key": "ir-sm"
+  },
+  {
+    "value": 8,
+    "name": "گلستان",
+    "hc-key": "ir-go"
+  },
+  {
+    "value": 11,
+    "name": "مازندران",
+    "hc-key": "ir-mn"
+  },
+  {
+    "value": 42,
+    "name": "تهران",
+    "hc-key": "ir-th"
+  },
+  {
+    "value": 6,
+    "name": "مرکزی",
+    "hc-key": "ir-mk"
+  },
+  {
+    "value": 4,
+    "name": "یزد",
+    "hc-key": "ir-ya"
+  },
+  {
+    "value": 4,
+    "name": "چهار محال بختیاری",
+    "hc-key": "ir-cm"
+  },
+  {
+    "value": 18,
+    "name": "خوزستان",
+    "hc-key": "ir-kz"
+  },
+  {
+    "value": 9,
+    "name": "لرستان",
+    "hc-key": "ir-lo"
+  },
+  {
+    "value": 1,
+    "name": "ایلام",
+    "hc-key": "ir-il"
+  },
+  {
+    "value": 7,
+    "name": "اردبیل",
+    "hc-key": "ir-ar"
+  },
+  {
+    "value": 3,
+    "name": "قم",
+    "hc-key": "ir-qm"
+  },
+  {
+    "value": 8,
+    "name": "همدان",
+    "hc-key": "ir-hd"
+  },
+  {
+    "value": 5,
+    "name": "زنجان",
+    "hc-key": "ir-za"
+  },
+  {
+    "value": 4,
+    "name": "قزوین",
+    "hc-key": "ir-qz"
+  },
+  {
+  	"value": 12,
+    "name": "آذربایجان غربی",
+    "hc-key": "ir-wa"
+  },
+  {
+    "value": 19,
+    "name": "آذربایجان شرقی",
+    "hc-key": "ir-ea"
+  },
+  {
+    "value": 8,
+    "name": "کرمانشاه",
+    "hc-key": "ir-bk"
+  },
+  {
+    "value": 13,
+    "name": "گیلان",
+    "hc-key": "ir-gi"
+  },
+  {
+    "value": 6,
+    "name": "کردستان",
+    "hc-key": "ir-kd"
+  },
+  {
+    "value": 4,
+    "name": "خراسان جنوبی",
+    "hc-key": "ir-kj"
+  },
+  {
+    "value": 13,
+    "name": "خراسان رضوی",
+    "hc-key": "ir-kv"
+  },
+  {
+    "value": 9,
+    "name": "خراسان شمالی",
+    "hc-key": "ir-ks"
+  },
+  {
+    "value": 8,
+    "name": "سیستان و بلوچستان",
+    "hc-key": "ir-sb"
+  },
+  {
+    "value": 8,
+    "name": "کرمان",
+    "hc-key": "ir-ke"
+  },
+  {
+    "value": 3,
+    "name": "البرز",
+    "hc-key": "ir-al"
+  }
+]

@@ -1,0 +1,352 @@
+extends layout
+block moshakhasatenamayande
+  .container
+    .panel.panel-default
+      .panel-heading
+        |#{namayadneDetails.naam}
+      table.table.table-hover
+        th(rowspan='4' class="col-md-1") 
+          img.img-circle.img-responsive(alt='Namayande Pic', src=src='/images/namayandegan/#{namayadneDetails.S_ID}.png')
+        tr
+          td(align="right" class="col-md-3")
+            p سن:
+              b  #{namayadneDetails.sen}
+          td(align="right" class="col-md-3")
+            p تحصیلات:
+              b  #{namayadneDetails.tahsilat}
+          td(align="right" class="col-md-3")
+            p محل تولد:
+              b  #{namayadneDetails.makanetavalod}
+        tr
+          td
+          td
+          td(id="addon" align="right")
+    
+
+
+    .container(id="huzurghiab")
+      .header
+       |اطلاعات حضور و غیبت
+      .row
+        div(id="gheybatPlot")
+        div(id="takhirPlot") 
+      div(id='partition')
+      h1(style='text-align: center')
+        |نمودار حضور جلسات نماینده
+      //- table.table.table-condensed
+      //-   thead
+      //-     tr
+      //-       th 
+      //-         |تاریخ جلسه
+      //-       th نمودار حضور
+      //-   tbody      
+      //-      each val in jalasatDetails
+      //-         tr
+      //-           td #{val.tarikh}
+      //-           td
+      //-             div(style='height: 20px;')
+      //-               if val.takhir==-1
+      //-                 .progress
+      //-                   .progress-bar.progress-bar-danger(role='progressbar', style='width:100%')
+      //-                     | غیبت
+
+      //-               else if val.takhir==0
+      //-                 .progress
+      //-                   .progress-bar.progress-bar-success(role='progressbar', style='width:100%')
+      //-                     a(href='/jalase/'+ val.shomarejalase +'?sid=#{namayadneDetails.S_ID}') نقش
+      //-               else
+      //-                 .progress
+      //-                   .progress-bar.progress-bar-warning(role='progressbar', style='width:'+100*val.takhir/val.zaman+'%')
+      //-                     | 
+      //-                   .progress-bar.progress-bar-success(role='progressbar', style='width:'+(100-(100*val.takhir/val.zaman))+'%')
+      //-                     | a(href='www.google.com') salamsalar
+    .container
+      .jumbotron
+        h2 اطلاعات کمیسیون ها
+
+  script.
+    $.getJSON( "/jdetails/810123", function( data ) {
+      console.log(partition.nodes(data));
+    });
+
+
+    var zabanha='#{namayadneDetails.zabana}';
+    console.log(zabanha);
+    if(zabanha){
+        $('#addon').append('<p>محل تولد:<b> '+zabanha+'</b></p> ');
+    }
+
+
+  script.
+    var w = 1120,
+        h = 600,
+        x = d3.scale.linear().range([0, w]),
+        y = d3.scale.linear().range([0, h]);
+
+    var vis = d3.select("#partition").append("div")
+        .attr("class", "chart")
+        .style("width", w + "px")
+        .style("height", h + "px")
+      .append("svg:svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    var partition = d3.layout.partition()
+        //- .value(function(d) { return d.size; });
+        .value(function(d){return d.size;})
+        .sort(function(a, b) { return d3.ascending(a.name, b.name); })
+
+    d3.json("/jdetails/123123", function(root) {
+      var g = vis.selectAll("g")
+          .data(partition.nodes(root))
+          .enter().append("svg:g")
+          .attr("transform", function(d) { return "translate(" + x(d.y) + "," + y(d.x) + ")"; })
+          .on("click", click);
+
+      var kx = w / root.dx,
+          ky = h / 1;
+
+      g.append("svg:rect")
+          .attr("width", root.dy * kx)
+          .attr("height", function(d) { return d.dx * ky; })
+          .attr("class", function(d) { return d.children ? "parent" : "child"; })
+          .style("fill",function(d){
+            if (d.fasl)
+            {
+              if(d.fasl=="1")
+              return "#bbff99"; 
+              if(d.fasl=="2")
+              return "#ffff99";  
+              if(d.fasl=="3")
+              return "#ffc299";  
+              if(d.fasl=="4")
+              return "#b3ffff";               
+            }
+            if(d.depth==1)
+            return "#888844"
+            if(d.depth==3)
+            return "#cccc99"
+            return "#444422";
+            });
+
+      g.append("svg:text")
+          .attr("transform", transform)
+          .attr("dy", ".35em")
+          .style("opacity", function(d) { return d.dx * ky > 12 ? 1 : 0; })
+          .text(function(d) { return d.name; })
+
+      function click(d) {
+        if(d.depth==3)
+        {
+          var url = d.url;
+          if(url){
+          window.open(url);
+          }
+        }
+        if(!d.children) return;
+
+        kx = (d.y ? w - 40 : w) / (1 - d.y);
+        ky = h / d.dx;
+        x.domain([d.y, 1]).range([d.y ? 40 : 0, w]);
+        y.domain([d.x, d.x + d.dx]);
+
+        var t = g.transition()
+            .duration(d3.event.altKey ? 7500 : 750)
+            .attr("transform", function(d) { return "translate(" + x(d.y) + "," + y(d.x) + ")"; });
+
+        t.select("rect")
+            .attr("width", d.dy * kx)
+            .attr("height", function(d) { return d.dx * ky; });
+
+        t.select("text")
+            .attr("transform", transform)
+            .style("opacity", function(d) { return d.dx * ky > 12 ? 1 : 0; });
+
+        d3.event.stopPropagation();
+      }
+
+      function transform(d) {
+        return "translate(8," + d.dx * ky / 2 + ")";
+      }
+    });
+
+  script.
+    d3.csv("/Data/gheybat.csv", function(data) {
+        //load CSVfile here
+        map = data.map(function(d) { return parseInt(d.jalase); });
+        var formatCount = d3.format(",.0f");
+        var margin = {top: 10, right: 30, bottom: 30, left: 30},
+        width = 500 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+        ///inja range mehvare x ro taeenm
+        var x = d3.scale.linear()
+            .domain([0, 14])
+            .range([0, width]);
+        // Generate a histogram using twenty uniformly-spaced bins.
+        var data = d3.layout.histogram()
+            .bins(40)
+            (map);
+
+        var y = d3.scale.linear()
+            .domain([0, d3.max(data, function(d) { return d.y; })])
+            .range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var svg = d3.select("#gheybatPlot").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        svg.append("text")
+            .attr("x", (width / 2))             
+            .attr("y", 50 - (margin.top / 2))
+            .attr("text-anchor", "middle")  
+            .style("font-size", "16px") 
+            .style("text-decoration", "underline")  
+            .text("نمودار تعداد غیبت نمایندگان");
+        var bar = svg.selectAll(".bar")
+            .data(data)
+          .enter().append("g")
+            .attr("class", "bar")
+            .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+            ////in hamun meghdarie ke har nemayande vase xodesh dare
+
+        //- var gheybateIn=parseInt(#{tedadegheybat});
+        var tedadegheybat=parseInt(#{namayadneDetails.tedadegheybat} )
+        bar.append("rect")
+            .attr("x", 1)
+            .attr("width", x(data[0].dx) - 1)
+            .attr("height", function(d) { return height - y(d.y); })
+            .style("fill",function(d){
+
+                if ((d.x<tedadegheybat&&tedadegheybat<d.x+d.dx)||(d.x==tedadegheybat))
+                {
+                  console.log("salamsalar");
+                    return "#FF9933";                
+                }
+                else
+                {
+                    return"#333"; 
+                }
+            })
+
+        bar.append("text")
+            .attr("dy", ".75em")
+            .attr("y", -15)
+            .attr("x", x(data[0].dx) / 2)
+            .attr("text-anchor", "middle")
+            .attr("fill","steelblue")
+            .text(function(d) { 
+                if (d.y!=0){
+                    return formatCount(d.y);                    
+                }});
+
+        svg.append("text")
+            .attr("x", (width / 2))             
+            .attr("y", 70 - (margin.top / 2))
+            .attr("text-anchor", "middle")  
+            .style("font-size", "13px") 
+            .text("این نماینده در این دوره "+"#{namayadneDetails.tedadegheybat}"+"جلسه غیبت داشته است");
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+    });
+
+  script.
+    d3.csv("/Data/takhir.csv", function(data) {
+        //load CSVfile here
+        map = data.map(function(d) { return parseInt(d.mizan); });
+        var formatCount = d3.format(",.0f");
+        var margin = {top: 10, right: 30, bottom: 30, left: 30},
+        width = 700 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+        ///inja range mehvare x ro taeenm
+        var x = d3.scale.linear()
+            .domain([0, 1700])
+            .range([0, width-150]);
+        // Generate a histogram using twenty uniformly-spaced bins.
+        var data = d3.layout.histogram()
+            .bins(40)
+            (map);
+
+        var y = d3.scale.linear()
+            .domain([0, d3.max(data, function(d) { return d.y; })])
+            .range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var svg = d3.select("#takhirPlot").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        svg.append("text")
+            .attr("x", (width / 2))             
+            .attr("y", 50 - (margin.top / 2))
+            .attr("text-anchor", "middle")  
+            .style("font-size", "16px") 
+            .style("text-decoration", "underline")  
+            .text("میزان تاخیر نمایندگان");
+        svg.append("text")
+            .attr("x", (width / 2))             
+            .attr("y", 70 - (margin.top / 2))
+            .attr("text-anchor", "middle")  
+            .style("font-size", "13px") 
+            .text("این نماینده در این دوره "+"#{namayadneDetails.mizanetakhir}"+"دقیقه تاخیر داشته است");
+
+        var bar = svg.selectAll(".bar")
+            .data(data)
+          .enter().append("g")
+            .attr("class", "bar")
+            .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+            ////in hamun meghdarie ke har nemayande vase xodesh dare
+
+        //- var gheybateIn=parseInt(#{tedadegheybat});
+        var mizanetakhir=parseInt(#{namayadneDetails.mizanetakhir} )
+
+        bar.append("rect")
+            .attr("x", 1)
+            .attr("width", x(data[0].dx) - 1)
+            .attr("height", function(d) { return height - y(d.y); })
+            //- .attr("fill","steelblue")
+            .style("fill",function(d){
+                if ((d.x<mizanetakhir&&mizanetakhir<d.x+d.dx)||(d.x==mizanetakhir))
+                {
+                    return "#FF9933";                
+                }
+                else
+                {
+                    return"#333"; 
+                }
+            })
+
+        bar.append("text")
+            .attr("dy", ".75em")
+            .attr("y", -15)
+            .attr("x", x(data[0].dx) / 2)
+            .attr("text-anchor", "middle")
+            .attr("fill","steelblue")
+            .text(function(d) { 
+                if (d.y!=0){
+                    return formatCount(d.y);                    
+                }});
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+    });
+
+
+

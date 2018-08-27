@@ -1,0 +1,149 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "سال اول",
+   "children": [
+    {
+     "name": "بهار","fasl": "1",
+     "children": [
+      {"name": "AgglomerativeCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "CommunityStructure", "size": 10},
+      {"name": "HierarchicalCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MergeEdge", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "تابستان","fasl": "2",
+     "children": [
+      {"name": "BetweennessCentrality", "size": 10,"url":  "https://www.google.com"},
+      {"name": "LinkDistance", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MaxFlowMinCut", "size": 10,"url":  "https://www.google.com"},
+      {"name": "ShortestPaths", "size": 10,"url":  "https://www.google.com"},
+      {"name": "SpanningTree", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز","fasl": "3",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز","fasl": "4",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "سال دوم",
+   "children": [
+       {
+     "name": "بهار","fasl": "1",
+     "children": [
+      {"name": "AgglomerativeCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "CommunityStructure", "size": 10,"url":  "https://www.google.com"},
+      {"name": "HierarchicalCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MergeEdge", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "تابستان","fasl": "2",
+     "children": [
+      {"name": "BetweennessCentrality", "size": 10,"url":  "https://www.google.com"},
+      {"name": "LinkDistance", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MaxFlowMinCut", "size": 10,"url":  "https://www.google.com"},
+      {"name": "ShortestPaths", "size": 10,"url":  "https://www.google.com"},
+      {"name": "SpanningTree", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز","fasl": "3",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز","fasl": "4",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "سال سوم",
+   "children": [
+    {
+     "name": "بهار",
+     "children": [
+      {"name": "AgglomerativeCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "CommunityStructure", "size": 10,"url":  "https://www.google.com"},
+      {"name": "HierarchicalCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MergeEdge", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "تابستان",
+     "children": [
+      {"name": "BetweennessCentrality", "size": 10,"url":  "https://www.google.com"},
+      {"name": "LinkDistance", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MaxFlowMinCut", "size": 10,"url":  "https://www.google.com"},
+      {"name": "ShortestPaths", "size": 10,"url":  "https://www.google.com"},
+      {"name": "SpanningTree", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "سال چهارم",
+   "children": [
+    {
+     "name": "بهار",
+     "children": [
+      {"name": "AgglomerativeCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "CommunityStructure", "size": 10,"url":  "https://www.google.com"},
+      {"name": "HierarchicalCluster", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MergeEdge", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "تابستان",
+     "children": [
+      {"name": "BetweennessCentrality", "size": 10,"url":  "https://www.google.com"},
+      {"name": "LinkDistance", "size": 10,"url":  "https://www.google.com"},
+      {"name": "MaxFlowMinCut", "size": 10,"url":  "https://www.google.com"},
+      {"name": "ShortestPaths", "size": 10,"url":  "https://www.google.com"},
+      {"name": "SpanningTree", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    },
+    {
+     "name": "پاییز",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 10,"url":  "https://www.google.com"}
+     ]
+    }
+   ]
+  }
+ ]
+}

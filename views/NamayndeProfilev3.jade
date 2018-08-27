@@ -1,0 +1,422 @@
+extends layout
+block profilev3
+  .row
+    .col-md-8
+      .widget
+        .widget-advanced
+          // Widget Header
+          .widget-header.text-center.themed-background
+            h2.widget-content-light(style='font-size: 20px; color:gray;')
+              strong اطلاعات کمیسیون
+          // END Widget Header
+          // Widget Main
+          .widget-main.profilewidget.comisionwidget
+            .table-responsive
+              table#comision-table.table.table-vcenter.table-condensed.table-bordered.table-striped
+                thead
+                  tr
+                    th(style="text-align:center;") سال چهارم
+                    th(style="text-align:center;") سال سوم
+                    th(style="text-align:center;") سال دوم
+                    th(style="text-align:center;") سال اول
+                    th(style="text-align:center;") 
+                tbody(id="comisiontablebody")
+
+    .col-md-4
+      .widget
+        .widget-advanced
+          // Widget Header
+          .widget-header.text-center.themed-background
+            h2.widget-content-light
+              strong #{namayadneDetails.naam}
+          // END Widget Header
+          // Widget Main
+          .widget-main.profilewidget
+            img.widget-image-container(alt='Namayande Pic', src='/njsstatic/images/namayandegan/#{namayadneDetails.S_ID}.png')
+            .gallery.gallery-widget(data-toggle='lightbox-gallery')
+              .row
+                .col-md-7.tahsilat
+                  .widget-simple
+                    h3.widget-content.text-right.animation-pullDown
+                      strong تحصیلات
+                      small #{namayadneDetails.tahsilat}
+                .col-md-3.birthplace
+                  .widget-simple
+                    h3.widget-content.text-right.animation-pullDown
+                      strong محل تولد
+                      small #{namayadneDetails.makanetavalod}   
+                .col-md-2.age
+                  .widget-simple
+                    h3.widget-content.text-right.animation-pullDown
+                      strong سن
+                      small #{namayadneDetails.sen} 
+  .block.full
+    // Working Tabs Title
+    .block-title
+      h2(id=("faliatshout"))
+        |    فعالیت های نماینده    
+        small در دوره نهم
+    // END Working Tabs Title
+    // Working Tabs Content
+    ul.nav.nav-tabs(data-toggle='tabs')
+      li
+        a(href='#rahyabi') اطلاعات آراء
+      li.active
+        a(href='#huzurghiab') نظم حضور در جلسات
+      li
+        a(href='#mosharekat') طرح های امضا شده 
+      li
+        a(href='#notgh') نطق های پیش از دستور
+      li
+        a(href='#tazakor') تذکرات کتبی به وزرا
+      li
+        a(href='#soal') سوال از وزرا در کمیسیون ها
+
+        // Default Tabs
+    .tab-content
+      .tab-pane(id='rahyabi')
+        .row.upperrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong نقشه استان حوزه انتخابیه
+              .widget-extra.datapiecharts
+                #iranmap
+          .col-md-6
+            .chartcol.nearmap
+              a.widget.widget-hover-effect2
+                .widget-simple.themed-background-modern
+                  h1.widget-content.widget-content-light.text-center
+                    strong حوزه انتخابیه
+                .widget-extra.datapiecharts.half
+                  .widget-simple
+                    .shouthoze  
+                      |#{namayadneDetails.hoze}
+                    .shouthoze.ostanesh
+                      |استان #{namayadneDetails.ostan}
+            .chartcol.nearmap
+              a.widget.widget-hover-effect2
+                .widget-simple.themed-background-modern
+                  h4.widget-content.widget-content-light.text-center
+                    strong اطلاعات آراء
+                .widget-extra.datapiecharts.half
+                  .widget-simple
+                    .row
+                      .col-md-6
+                        .shoutray
+                          |درصد رای  
+                        .shouthoze.ostanesh
+                          .pie-chart.block-section.easyPieChart(style='width: 70px; height: 70px; line-height: 70px;', data-percent='#{namayadneDetails.darsaderay}', data-size='70')
+                            span #{namayadneDetails.darsaderay}                
+                      .col-md-6
+                        .shoutray
+                          | تعداد رای
+                        .shouthoze.ostanesh
+                          small(style="color: gray;")
+                            |#{namayadneDetails.tedaderay}
+      .tab-pane(id="huzurghiab")
+        .row.upperrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong جایگاه ایشان در توزیع میزان عدم حضور
+              .widget-extra.datapiecharts.hist
+                #adamplot
+          .col-md-6
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |مجموع زمان عدم حضور(به دقیقه): 
+                  strong #{namayadneDetails.adam}
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |%
+                  |درصد زمان عدم حضور: 
+                  strong(id="darsadadam")
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |تعداد غیبت: 
+                  strong #{namayadneDetails.tedadegheybat}
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |میزان تاخیر تاخیر: 
+                  strong #{namayadneDetails.mizanetakhir}
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |.ایشان از  
+                  strong #{namayadneDetails.darsad_kamtar_adam} 
+                  |% از نمایندگان کمتر غیبت داشته اند
+      .tab-pane(id="mosharekat")
+        .row.upperrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong جایگاه ایشان در توزیع تعداد طرح های امضا کرده
+              .widget-extra.datapiecharts.hist
+                #mosharekat-histogram
+          .col-md-6
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |تعداد طرح: 
+                  strong #{namayadneDetails.total_tarh}
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |%
+                  |درصد از کل لوایح:
+                  strong(id="darsadtarh")
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |.ایشان از #{namayadneDetails.darsad_kamtar_tarh} % نمایندگان بیشتر مشارکت داشته اند
+        .row.downrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong چه نسبتی از طرح های هر کمیسیون توسط این نماینده امضا شده است
+                  small  (به نسبت کل طرح های کمیسیون)
+              .widget-extra.datapiecharts
+                #mosharekat-stack(style="width:600px;height:500px;")
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong فراوانی کمیسیونهای طرح
+                  small  (میان طرح های این نماینده)
+              .widget-extra.datapiecharts
+                #mosharekat-pie(style="width:600px;height:500px; margin:0;")
+        .row
+          #mosharekatwc
+      .tab-pane.active(id="notgh")
+        .row.upperrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong جایگاه این ایشان در توزیع نطق های نمایندگان
+              .widget-extra.datapiecharts.hist
+                #notgh-histogram
+          .col-md-6
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |تعداد نطق در صحن علنی: 
+                  strong #{namayadneDetails.total_notgh}
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |%
+                  |درصد از کل نطق ها: 
+                  strong(id='darsadnotgh')
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |.ایشان از #{namayadneDetails.darsad_kamtar_notgh} % از نمایندگان بیشتر تذکر داشته اند
+        .row
+          #notghwc
+      .tab-pane(id="tazakor")
+        .row.upperrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong جایگاه ایشان در توزیع تعداد تذکرات کتبی
+              .widget-extra.datapiecharts.hist
+                #tazakor-histogram
+          .col-md-6
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |تعداد تذکر کتبی : 
+                  strong #{namayadneDetails.total_tazakor}
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |%
+                  |درصد تذکرات ایشان: 
+                  strong(id="darsadtazakor")
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |.ایشان از  #{namayadneDetails.darsad_kamtar_tazakor} % نمایندگان بیشتر تذکر داده اند
+        .row.downrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong چه نسبتی از طرح های هر کمیسیون توسط این نماینده امضا شده است
+                  small  (به نسبت کل سوالات پرسیده شده از هر کمیسیون)
+              .widget-extra.datapiecharts
+                #tazakor-stack(style="width:600px;height:500px;")
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong فراوانی مخاطبین تذکرات
+                  small  (میان مخاطبین این نماینده)
+              .widget-extra.datapiecharts
+                #tazakor-pie(style="width:600px;height:500px;")
+
+
+
+
+          //- .col-md-6
+          //-   .col-md-12.presence-details
+          //-     .widget
+          //-       .widget-simple.themed-background
+          //-         .widget-icon.pull-left.animation-fadeIn.themed-background-dark.fixed-icon-parent
+          //-           i.fa.fa-plus.fa-sm.fixed-icon
+          //-         h4.widget-content.widget-content-light.text-right.animation-hatch.text-center-widget(style='position:relative;')
+          //-           strong تعداد تذکرات ایشان: #{namayadneDetails.total_tazakor} 
+          //-   .col-md-12.presence-details
+          //-     .widget
+          //-       .widget-simple.themed-background
+          //-         .widget-icon.pull-left.animation-fadeIn.themed-background-dark.fixed-icon-parent
+          //-           i.fa.fa-plus.fa-sm.fixed-icon
+          //-         h4.widget-content.widget-content-light.text-right.animation-hatch.text-center-widget(id= "darsadtazakor" style='position:relative;')
+        .row
+          #tazakorwc
+      .tab-pane(id="soal")
+        .row.upperrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong جایگاه ایشان در توزیع تعداد سوال های مطرح شده
+              .widget-extra.datapiecharts.hist
+                #soal-histogram
+          .col-md-6
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |تعداد سوالات از وزرا: 
+                  strong #{namayadneDetails.total_soal}
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |%
+                  |درصد سوالات ایشان از کل سوالات:
+                  strong(id="darsadsoal")
+            .widget
+              .widget-simple.detsection
+                .widget-icon.pull-left.themed-background.animation-fadeIn
+                  i.fa.fa-file-text-o
+                h4.widget-content.text-right
+                  |.ایشان از #{namayadneDetails.darsad_kamtar_soal} % نمایندگان بیشتر سوال پرسیده اند
+        .row.downrow
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong چه نسبتی از سوال های هر وزارتخانه توسط این نماینده صورت گرفته
+                  small  (به نسبت کل طرح های کمیسیون)
+              .widget-extra.datapiecharts
+                #soal-stack(style="width:600px;height:500px;")
+          .col-md-6.chartcol
+            a.widget.widget-hover-effect2
+              .widget-simple.themed-background-modern
+                h4.widget-content.widget-content-light.text-center
+                  strong فراوانی مخاطبین سوال ها
+                  small  (میان مخاطبین این نماینده)
+              .widget-extra.datapiecharts
+                #soal-pie(style="width:600px;height:500px;")
+
+
+                    
+            
+          // END Default Tabs
+    // END Working Tabs Content
+  
+  
+  script(src='https://code.highcharts.com/highcharts.js',type="text/javascript")
+  // script(src='https://code.highcharts.com/modules/exporting.js',type="text/javascript")
+  script(src='/njsstatic/d3.js',type="text/javascript")
+
+  script(src='https://code.highcharts.com/maps/modules/map.js',type="text/javascript")
+  script(src='https://code.highcharts.com/maps/modules/exporting.js',type="text/javascript")
+  script(src='https://code.highcharts.com/mapdata/countries/ir/ir-all.js',type="text/javascript")
+
+  script(src='/njsstatic/javascripts/plots.js',type="text/javascript")
+
+
+
+  script.
+    var sid=#{namayadneDetails.S_ID};
+    var totaltazakor=#{namayadneDetails.total_tazakor}
+    var totalsoal=#{namayadneDetails.total_soal}
+    var totaltarh=#{namayadneDetails.total_tarh}
+    var totalnotgh=#{namayadneDetails.total_notgh}
+    var totaladam=#{namayadneDetails.adam}
+    var ostanname="#{namayadneDetails.ostan}"
+    var nid="9"+sid;
+    var adam=#{namayadneDetails.adam};
+    $(drawTazakor(nid));
+    $(drawSoal(nid));
+    $(drawMosharekat(nid));
+    $(drawTazakorHistogram(totaltazakor));
+    $(drawNotghHistogram(totalnotgh));
+    $(drawAdamHistogram(adam));
+    $(drawMosharekatHistogram(totaltarh));
+    $(drawSoalHistogram(totalsoal));
+    var kolesoalat=3400;
+    var kolletazakorat=16124;
+    var koletarha=16643;
+    var kolenotghha=1142;
+    var kolezamanejalasat=95423;
+    $(setDarsadSoal(((totalsoal*100/kolesoalat)).toString().substring(0,3)))
+    $(setDarsadTazakor(((totaltazakor*100/kolletazakorat)).toString().substring(0,3)))
+    $(setDarsadMosharekat(totaltarh,((totaltarh*100/koletarha)).toString().substring(0,3)),'xxxx')
+    $(setDarsadNotgh(totalnotgh*100/kolenotghha))
+    $(setDarsadAdam(totaladam*100/kolezamanejalasat))
+
+    $(drawAllWordClouds(nid))
+
+
+
+
+    $(buildComisionTable(nid))
+    $(drawMap(ostanname))
+
+
+
