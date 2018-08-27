@@ -19,7 +19,7 @@
 
 
 ## Description
-This is nodeJS implementation of data visalization website for Iran's parliament. This has been implemented in order to demonstrate and compare performance of senators during two periods of perliament. This website had been launched right before parliament election and it reached a million viewers in three days. It was a huge success for [University of Tehran's Social Network Lab](http://sociallab.ir/), specially considering relatively small group of students working on the project. The routes and database queries are designed in a very scalable way and during the launch project was running on 5 parallel servers. 
+This is nodeJS implementation of data visalization website for Iran's parliament. I have (solely and proudly!) write it in order to demonstrate and compare performance of senators during two periods of perliament. This website had been launched right before parliament election and it reached a million viewers in three days. It was a huge success for [University of Tehran's Social Network Lab](http://sociallab.ir/), specially considering relatively small group of students working on the project. The routes and database queries are designed in a very scalable way and during the launch project was running on 5 parallel servers. 
  All the data used in this project are publicly available online in Iran's parliament website, the web-crawling and data mining and mainpulation codes are also avalilable [in a separate repository](asd).
 
 ## Key Features
